@@ -1,0 +1,250 @@
+html,
+body {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  user-select: none;
+  width: 100%;
+}
+
+.anime-dialog {
+  align-items: center;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+.anime-dialog_text {
+  font-size: 1.2em;
+}
+:fullscreen .anime-dialog {
+  display: none;
+}
+.anime-dialog_content {
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+.anime-dialog_button {
+  appearance: none;
+  background: #4676d7;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 8px 8px 0 8px;
+  padding: 8px 16px;
+}
+
+:fullscreen .anime-base {
+  animation: 60s 4s ease-in-out both sunrise-base;
+  background: rgb(232, 138, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(232, 138, 0, 1) 0%,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(0, 136, 255, 1) 50%,
+    rgba(3, 3, 73, 1) 70%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background-size: 100% 400%;
+  height: 100%;
+  width: 100%;
+}
+:fullscreen .anime-sun {
+  animation: 60s 4s ease-in-out both sunrise-sun;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  bottom: -400%;
+  filter: blur(32px) drop-shadow(0 0 64px rgb(255, 123, 0));
+  height: 320px;
+  left: calc(50% - 160px);
+  position: fixed;
+  right: calc(50% - 160px);
+  width: 320px;
+  z-index: 1;
+}
+:fullscreen .anime-cloud {
+  animation: 256s 0s linear infinite sunrise-cloud;
+  background: transparent url("cloud.png") repeat top center;
+  background-size: auto;
+  bottom: 0;
+  height: auto;
+  left: 0;
+  opacity: 0.1;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+:fullscreen .anime-star {
+  animation: 64s 0s ease-in-out both sunrise-star;
+  background: transparent url("star.png") no-repeat top center;
+  bottom: 0;
+  height: auto;
+  left: 0;
+  opacity: 0.1;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+:fullscreen .anime-plane {
+  animation: 12s 30s linear both sunrise-plane;
+  position: fixed;
+  width: 256px;
+}
+:fullscreen .anime-year {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+:fullscreen .anime-year::after {
+  animation: 60s 4s ease-in-out both year-hide-to-visible;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  content: "2020";
+  font-size: 8em;
+  font-weight: 700;
+  padding: 12px 30px;
+}
+:fullscreen .anime-msg1 {
+  animation: 8s 56s ease-in-out both msg-hide-to-visible;
+  font-size: 1.75em;
+  font-weight: 700;
+  margin: 8px;
+  opacity: 0;
+  position: fixed;
+  text-align: center;
+  top: 10%;
+  width: calc(100% - 16px);
+}
+:fullscreen .anime-msg2 {
+  animation: 8s 56s ease-in-out both msg-hide-to-visible;
+  bottom: 10%;
+  font-size: 1.75em;
+  font-weight: 700;
+  margin: 8px;
+  opacity: 0;
+  position: fixed;
+  text-align: center;
+  width: calc(100% - 16px);
+}
+
+.anime-footer {
+  align-items: flex-end;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  height: auto;
+}
+.anime-name {
+  background: #fff;
+  flex-grow: 1;
+  flex-shrink: 1;
+  z-index: 2;
+}
+.anime-name_content {
+  animation: name-scroll 10s linear infinite;
+  display: inline-block;
+  font-size: 1.5em;
+  padding-left: 100%;
+  white-space: nowrap;
+}
+.anime-icons {
+  align-items: center;
+  background: #fff;
+  border-top-left-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  z-index: 3;
+}
+.anime-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px;
+}
+.anime-icons a * {
+  height: 40px;
+  width: 40px;
+}
+
+@keyframes sunrise-base {
+  to {
+    background-position: bottom;
+  }
+}
+@keyframes sunrise-sun {
+  to {
+    bottom: 30%;
+  }
+}
+@keyframes sunrise-cloud {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+@keyframes sunrise-star {
+  to {
+    background-position: 0 200%;
+  }
+}
+@keyframes sunrise-plane {
+  from {
+    right: 0;
+    top: 20%;
+    transform: rotate(15deg) translateX(150%);
+  }
+  to {
+    right: 100%;
+    top: 0;
+    transform: rotate(15deg) translateX(0);
+  }
+}
+@keyframes year-hide-to-visible {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    content: "2021";
+    opacity: 1;
+  }
+}
+@keyframes msg-hide-to-visible {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes name-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
